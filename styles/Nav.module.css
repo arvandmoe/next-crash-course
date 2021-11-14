@@ -1,0 +1,31 @@
+.nav {
+    height: 50px;
+    padding: 10px;
+    background-color: #f7f7f7;
+    color: #22009e;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;    
+}
+
+.nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+}
+
+.nav ul li a {
+    margin: 5px 15px;
+}
+
+.title Link {
+    color: #0070f3;
+    text-decoration: none;
+  }
+  
+  .title Link:hover,
+  .title Link:focus,
+  .title Link:active {
+    text-decoration: underline;
+  }
