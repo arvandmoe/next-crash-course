@@ -1,8 +1,10 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Layout.module.css'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Layout.module.css";
+import PostList from "../components/PostList";
 
-export default function Home() {
+export default function Home({ posts }) {
+  console.log(posts);
   return (
     <div className={styles.container}>
       <Head>
@@ -17,7 +19,7 @@ export default function Home() {
         </h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -52,18 +54,32 @@ export default function Home() {
         </div>
       </main>
 
+      <PostList posts={posts} />
+
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
+
+export const getStaticProps = async () => {
+  const res = await fetch(
+    "https://jsonplaceholder.typicode.com/posts?_limit=6"
+  );
+  const posts = await res.json();
+  return {
+    props: {
+      posts,
+    },
+  };
+};
